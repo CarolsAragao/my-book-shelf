@@ -1,0 +1,11 @@
+main{
+    width: 100%;
+    background-color: black;
+}
+
+.banner{
+    background-image: url('../../../public/assets/library.png');
+    margin: auto;
+    width: 80%;
+    height: 500px;
+}
