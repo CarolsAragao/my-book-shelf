@@ -1,0 +1,16 @@
+<p-toolbar>
+    <div class="p-toolbar-group-start">
+        <p-button icon="pi pi-plus" class="mr-2" text />
+        <p-button icon="pi pi-print" class="mr-2" text />
+        <p-button icon="pi pi-upload" text />
+    </div>
+    <div class="p-toolbar-group-center">
+        <p-iconfield iconPosition="left">
+            <p-inputicon styleClass="pi pi-search" />
+            <input type="text" pInputText placeholder="Search" />
+        </p-iconfield>
+    </div>
+    <div class="p-toolbar-group-end">
+        <p-splitButton label="Save" [model]="items"></p-splitButton>
+    </div>
+</p-toolbar>
