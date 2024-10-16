@@ -4,5 +4,5 @@ import { NavComponent } from './nav/nav.component';
 
 export const routes: Routes = [
 {path: 'home', component: HomeComponent},
-{path: 'nav', component: NavComponent}
+{path: '', component: NavComponent}
 ];
