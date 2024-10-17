@@ -1,6 +1,11 @@
 main{
+    background-image: linear-gradient(to right, #151515, #2d2d2d, #3e3e3e);
+}
+
+.container-banner{
     width: 100%;
-    background-color: black;
+    background-color: black; 
+    margin-bottom: 15px;   
 }
 
 .banner{
