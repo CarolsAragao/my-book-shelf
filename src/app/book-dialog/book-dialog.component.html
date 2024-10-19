@@ -1,0 +1,9 @@
+<div class="card flex justify-center">
+    <p-dialog header={{selectedBook.title}} [modal]="true" [(visible)]="visible" (onHide)="onHide()"[style]="{ width: '100rem' }">
+        
+        <img alt="Card" class="w-full" src={{selectedBook.cover}} />
+            
+        {{selectedBook.description | limitChars:(useLimitChars ? 50 : selectedBook.description.length)}}
+       
+    </p-dialog>
+</div>

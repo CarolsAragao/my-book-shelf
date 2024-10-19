@@ -1,16 +1,17 @@
 main{
-    background-image: linear-gradient(to right, #151515, #2d2d2d, #3e3e3e);
+    background-image: linear-gradient(to right, #2a0203, #400304, #4d0405);
 }
 
 .container-banner{
     width: 100%;
     background-color: black; 
-    margin-bottom: 15px;   
+    margin-bottom: 25px; 
+    border: 5px solid black;  
 }
 
 .banner{
     background-image: url('../../../public/assets/library.png');
     margin: auto;
     width: 80%;
-    height: 500px;
+    height: 300px;
 }
