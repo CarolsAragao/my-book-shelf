@@ -3,6 +3,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .btn-card-update{

@@ -4,9 +4,6 @@
             <ng-template pTemplate="header">
                 <img alt="Card" class="w-full" src={{book.cover}} />
             </ng-template>
-            <!-- <p>
-                {{book.description | limitChars:(useLimitChars ? 50 : book.description.length)}}
-            </p> -->
             <ng-template pTemplate="footer">
                 <div class="flex gap-4 mt-1">
                     <p-button (click)="showDialog(book)" class="btn-card-expand" label="Details" severity="contrast"/>
