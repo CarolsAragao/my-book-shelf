@@ -12,3 +12,47 @@
     color: #ffffff; 
     border: none;
 }
+
+.p-megamenu.p-component.p-megamenu-horizontal{
+    background-color:#374151;
+}
+
+.p-menuitem-text.ng-star-inserted {
+    color: #ffffff !important;
+}
+
+.p-menuitem-icon.pi.ng-star-inserted{
+    color: #ffffff !important;
+    margin-right: 5px;
+}
+
+.p-icon.p-submenu-icon{
+    color: #ffffff !important;
+    margin-left: 5px;
+}
+
+.p-menuitem-content {
+    background-color:#374151;
+}
+
+.p-tieredmenu.p-component.p-tieredmenu-overlay.ng-star-inserted{
+    background-color:#374151;
+}
+
+.p-megamenu-grid{
+    background-color:#374151;
+}
+
+.p-megamenu-submenu-header.p-submenu-header.ng-star-inserted{
+    background-color:#374151;
+    color: #ffffff;
+}
+
+.p-megamenu.p-component.p-megamenu-horizontal{
+    border:1px solid #374151;
+}
+
+.p-element .p-inputgroup{
+    margin: 25px 10px 25px 15px;
+    width: 30% !important;
+}

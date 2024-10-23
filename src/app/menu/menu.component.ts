@@ -1,4 +1,4 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MegaMenuItem } from 'primeng/api';
 
@@ -8,7 +8,6 @@ import { MegaMenuItem } from 'primeng/api';
   imports: [MegaMenuModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class MenuComponent implements OnInit{
   items: MegaMenuItem[] | undefined;
@@ -17,19 +16,17 @@ export class MenuComponent implements OnInit{
     this.items = [
         {
             label: 'Menu',
-            icon: 'pi pi-box',
+            // icon: 'pi pi-bars',
             items: [
                 [
                     {
-                        label: 'Living Room',
-                        items: [{ label: 'Accessories' }, { label: 'Armchair' }, { label: 'Coffee Table' }, { label: 'Couch' }, { label: 'TV Stand' }]
+                        label: 'My Shelf'
+                        // items: [{ label: 'Accessories' }]
                     }
                 ]                  
            
             ]
         }     
-    ]
-    console.log('items', this.items);
-    
+    ]    
   }
 }
