@@ -1,20 +1,6 @@
 main{
-    background-image: linear-gradient(to right, #2a0203, #400304, #4d0405);
+    background-color: #DBCBBD;
 }
-
-/* .container-banner{
-    width: 100%;
-    background-color: black; 
-    margin-bottom: 25px; 
-    border: 5px solid black;  
-}
-
-.banner{
-    background-image: url('../../../public/assets/library.png');
-    margin: auto;
-    width: 80%;
-    height: 300px;
-} */
 
 .filter{
     display: flex;
@@ -26,3 +12,13 @@ main{
     width: 400px;
 }
 
+.image{
+    background-image: url('../../../public/assets/library.webp');
+    height: 200px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.search-container{
+    margin-top: 40px;
+}
