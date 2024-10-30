@@ -2,15 +2,21 @@ import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Book } from './book';
-import { LimitCharsPipe } from '../pipes/limitChars.pipe';
 import { DialogModule } from 'primeng/dialog';
-import { BookDialogComponent } from "../book-dialog/book-dialog.component";
 import { InputTextModule } from 'primeng/inputtext';
+import { LimitCharsPipe } from '../../shared/pipes/limitChars.pipe';
+import { BookDialogComponent } from '../book-dialog/book-dialog.component';
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CardModule, ButtonModule, LimitCharsPipe, DialogModule, BookDialogComponent,InputTextModule],
+  imports: [
+            CardModule, 
+            ButtonModule, 
+            LimitCharsPipe, 
+            DialogModule, 
+            BookDialogComponent,
+            InputTextModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
