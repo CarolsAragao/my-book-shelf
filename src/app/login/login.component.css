@@ -1,24 +1,22 @@
 .container{
     width: 100%;
     background-color: #290001;
-    margin: auto;
-    height: 100vh;    
-}
+    height: 100vh;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+}   
 
 .login-container{
-    width: 500px;
-    margin: auto;
-    padding: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 form{
     display: flex;
     flex-direction: column;
-    margin-top: 50%;
-}
-
-form, input{
-    margin-bottom: 15px;
+    gap: 1rem;    
+    justify-content: center;
 }
 
 .title-form{
@@ -26,6 +24,18 @@ form, input{
     font-size: 20px;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 20px;
 }
 
+.input-login{
+    width: 340px;
+}
+
+.btn-login{
+    background-color: #4A2C2A;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+}
