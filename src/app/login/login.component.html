@@ -1,10 +1,10 @@
 <div class="container">
     <div class="login-container">
-        <form action="">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <p class="title-form">Carol's Library</p>
-            <input type="text" pInputText placeholder="Username" />
-            <input type="text" pInputText placeholder="Password" />
-            <p-button label="Login" severity="info" ></p-button>
+            <input type="text" pInputText placeholder="Username" formControlName="email"/>
+            <input type="text" pInputText placeholder="Password" formControlName="password"/>
+            <p-button label="Login" class="btn-login" type="submit"></p-button>
         </form>
     </div>
 </div>

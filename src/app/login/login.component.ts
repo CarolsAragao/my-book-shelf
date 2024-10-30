@@ -3,7 +3,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { PasswordModule } from 'primeng/password';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, Validators } from '@angular/forms';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 
@@ -22,12 +22,22 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
-  formGroup!: FormGroup;
+export class LoginComponent{
+  loginForm: FormGroup;
 
-    ngOnInit() {
-        this.formGroup = new FormGroup({
-            value: new FormControl()
-        });
+  constructor(
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Here',this.loginForm.value); 
+        }
     }
+
 }
