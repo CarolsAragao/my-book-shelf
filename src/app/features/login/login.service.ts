@@ -11,7 +11,7 @@ export class LoginService {
               private _baseService: BaseService
   ) {} 
 
-  getLogin() {
+  login() {
     return this._baseService.get(this.controller);
   }
 }

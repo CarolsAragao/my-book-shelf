@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -11,6 +11,7 @@ import { Auth } from '../../core/models/auth/auth.model';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
+import { Utils } from '../../shared/utils/utils';
 
 @Component({
   selector: 'app-login',
@@ -23,13 +24,13 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    CommonModule    
+    CommonModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [ LoginService]
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   constructor(
     private _fb: FormBuilder,
@@ -42,22 +43,21 @@ export class LoginComponent{
       password: ['', Validators.required]
     });
   } 
-  onSubmit() {
-    this._loginService.getLogin().subscribe((result) => {
-      console.log('Result: ', result);
-      
-    });
+
+  ngOnInit() {
+    
+  }
+  async onSubmit() {
 
     const auth = new Auth();
     if (this.loginForm.valid) {
       auth.email = this.loginForm.value.email
       auth.password = this.loginForm.value.password
 
-      if(this._auth.auth(auth)){
-        this._route.navigate(['home'])
-      } else {
-        alert('Login Inválido')
-      }
+      this._auth.login(auth).subscribe(
+        response => console.log('Login response:', Utils.decodeJWT(response)),
+        error => console.error('Login error:', error)
+      );      
     }
   }
 }
