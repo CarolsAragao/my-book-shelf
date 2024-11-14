@@ -3,5 +3,6 @@ export class Utils {
 
   static decodeJWT(token: string) {
       const decoded = jwtDecode(token);
+      return decoded;
     }  
 }

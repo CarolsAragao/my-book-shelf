@@ -9,7 +9,6 @@ import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Auth } from '../../core/models/auth/auth.model';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
 import { Utils } from '../../shared/utils/utils';
 
@@ -28,36 +27,37 @@ import { Utils } from '../../shared/utils/utils';
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  providers: [ LoginService]
+  providers: []
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
+  user: any;
   loginForm: FormGroup;
   constructor(
     private _fb: FormBuilder,
     private _auth: AuthService,
-    private _route: Router,
-    private _loginService: LoginService
+    private _route: Router
   ) {
     this.loginForm = this._fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   } 
-
-  ngOnInit() {
-    
-  }
   async onSubmit() {
-
     const auth = new Auth();
     if (this.loginForm.valid) {
       auth.email = this.loginForm.value.email
       auth.password = this.loginForm.value.password
 
-      this._auth.login(auth).subscribe(
-        response => console.log('Login response:', Utils.decodeJWT(response)),
-        error => console.error('Login error:', error)
-      );      
+      const res = await this._auth.login<any>(auth);
+      
+      if(res.success){
+        this._route.navigate(["home"]);
+      } else {
+        alert(res.message);
+      }
     }
   }
 }
+
+//TODO: GUARDS
+//TODO: MENSAGENS DE ERRO/SUCESSO TOAST
