@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { ApiResponse } from '../../models/base/base.model';
 import { Router } from '@angular/router';
+import { Utils } from '../../../shared/utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,32 @@ export class AuthService {
     });
   }
 
-  isAuthenticated(): boolean {   
+  isAuthenticated(): boolean {            
     return !!localStorage.getItem('token');
+  }
+  getUserEmail() {  
+    const decodedToken = this.getTokenDecoded();
+    return decodedToken?.email || null; 
+  }  
+
+  getUserId() {  
+    const decodedToken = this.getTokenDecoded();    
+    return decodedToken?.Guid || null; 
+  } 
+
+  getTokenDecoded() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return null; 
+      } 
+      const payload = token.split('.')[1]; 
+      const decodedPayload = atob(payload); 
+      return JSON.parse(decodedPayload); 
+    } catch (error) {
+      console.error('Erro ao decodificar o token:', error);
+      return null; 
+    }
   }
 
   logout() {
