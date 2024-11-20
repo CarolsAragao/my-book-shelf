@@ -6,6 +6,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuComponent } from '../menu/menu.component';
 import { AuthService } from '../../core/services/auth/auth.service';
+import { User } from '../../core/models/user/user.model';
 
 @Component({
   selector: 'app-nav',
@@ -22,11 +23,15 @@ import { AuthService } from '../../core/services/auth/auth.service';
 })
 export class NavComponent  implements OnInit{
   items: MenuItem[] | undefined;
+  userLoged = new User();
 
-  constructor(private _auth: AuthService) {
-
-  }
+  constructor(private _auth: AuthService) {}
     ngOnInit() {
+        this.buildingNav();   
+        this.setLogedUser();
+    }
+
+    buildingNav() {
         this.items = [
             {
                 label: 'Profile',
@@ -38,5 +43,9 @@ export class NavComponent  implements OnInit{
                 command: () => this._auth.logout(),
             }
         ];
+    }
+
+    setLogedUser() {
+        this.userLoged = this._auth.getUser();        
     }
 }

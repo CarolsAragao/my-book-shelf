@@ -5,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import { ApiResponse } from '../../models/base/base.model';
 import { Router } from '@angular/router';
 import { Utils } from '../../../shared/utils/utils';
+import { User } from '../../models/user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ export class AuthService {
   isAuthenticated(): boolean {            
     return !!localStorage.getItem('token');
   }
+
+  getUser() {  
+    const decodedToken = this.getTokenDecoded();
+    const user = new User(decodedToken);
+    return user; 
+  } 
   getUserEmail() {  
     const decodedToken = this.getTokenDecoded();
     return decodedToken?.email || null; 
@@ -44,6 +51,11 @@ export class AuthService {
   getUserId() {  
     const decodedToken = this.getTokenDecoded();    
     return decodedToken?.Guid || null; 
+  } 
+
+  getUserName() {  
+    const decodedToken = this.getTokenDecoded();    
+    return decodedToken?.sub || null; 
   } 
 
   getTokenDecoded() {
