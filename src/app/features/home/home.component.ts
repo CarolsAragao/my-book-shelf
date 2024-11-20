@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { NavComponent } from '../nav/nav.component';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,

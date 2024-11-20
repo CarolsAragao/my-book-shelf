@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -10,7 +10,6 @@ import { AuthService } from '../../core/services/auth/auth.service';
 import { Auth } from '../../core/models/auth/auth.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Utils } from '../../shared/utils/utils';
 
 @Component({
   selector: 'app-login',
