@@ -48,13 +48,7 @@ export class LoginComponent {
       auth.email = this.loginForm.value.email
       auth.password = this.loginForm.value.password
 
-      const res = await this._auth.login<any>(auth);
-      
-      if(res.success){
-        this._route.navigate(["home"]);
-      } else {
-        alert(res.message);
-      }
+      await this._auth.login(auth);
     }
   }
 }

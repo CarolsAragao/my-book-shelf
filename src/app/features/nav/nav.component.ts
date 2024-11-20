@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuComponent } from '../menu/menu.component';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,6 +23,9 @@ import { MenuComponent } from '../menu/menu.component';
 export class NavComponent  implements OnInit{
   items: MenuItem[] | undefined;
 
+  constructor(private _auth: AuthService) {
+
+  }
     ngOnInit() {
         this.items = [
             {
@@ -30,7 +34,8 @@ export class NavComponent  implements OnInit{
             },
             {
                 label: 'Logout',
-                icon: 'pi pi-sign-out'
+                icon: 'pi pi-sign-out',
+                command: () => this._auth.logout(),
             }
         ];
     }
