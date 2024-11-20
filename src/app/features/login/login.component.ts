@@ -52,5 +52,5 @@ export class LoginComponent {
   }
 }
 
-//TODO: GUARDS
 //TODO: MENSAGENS DE ERRO/SUCESSO TOAST
+//TODO: loading

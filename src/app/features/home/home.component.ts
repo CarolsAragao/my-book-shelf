@@ -7,6 +7,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { NavComponent } from '../nav/nav.component';
 import { Router } from '@angular/router';
+import { ToastService } from '../../shared/toast/toast.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,14 +22,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   user: any;
-  filter = '';
-
-  constructor(private _router: Router){}
-  ngOnInit() {
-    const navigation = this._router.getCurrentNavigation();
-    this.user = navigation?.extras.state?.['data'];
-    console.log('Objeto recebido:', this.user);
-  }
+  filter = '';  
 }

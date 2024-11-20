@@ -4,8 +4,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { ApiResponse } from '../../models/base/base.model';
 import { Router } from '@angular/router';
-import { Utils } from '../../../shared/utils/utils';
 import { User } from '../../models/user/user.model';
+import { ToastService } from '../../../shared/toast/toast.service';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
   apiUrl = 'https://localhost:7052/api/Auth';
 
   constructor(public http: HttpClient,
-              private _router: Router
+              private _router: Router,
+              private _message: ToastService
    ){}
 
   async login(auth: Auth) {
@@ -29,7 +31,7 @@ export class AuthService {
         localStorage.setItem('token', res.data);
         this._router.navigate(['home'])
       } else {
-        alert(res.message);
+        this._message.showError('Error!', res.message);
       }
     });
   }
