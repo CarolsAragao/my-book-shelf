@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavComponent } from './nav.component';
+import { User } from '../../core/models/user/user.model';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -20,4 +21,10 @@ describe('NavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return an User', () => {
+    const result = component.setLogedUser(); 
+    expect(result).toBe(); 
+  });
+
 });

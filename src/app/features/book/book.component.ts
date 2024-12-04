@@ -13,9 +13,8 @@ import { BookDialogComponent } from '../book-dialog/book-dialog.component';
   imports: [
             CardModule, 
             ButtonModule, 
-            LimitCharsPipe, 
             DialogModule, 
-            BookDialogComponent,
+            // BookDialogComponent,
             InputTextModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'

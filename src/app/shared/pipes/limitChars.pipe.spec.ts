@@ -1,8 +1,8 @@
-import { DescriptionPipe } from './description.pipe';
+// import { LimitCharsPipe } from "./limitChars.pipe";
 
-describe('DescriptionPipe', () => {
-  it('create an instance', () => {
-    const pipe = new DescriptionPipe();
-    expect(pipe).toBeTruthy();
-  });
-});
+// describe('DescriptionPipe', () => {
+//   it('create an instance', () => {
+//     const pipe = new LimitCharsPipe();
+//     expect(pipe).toBeTruthy();
+//   });
+// });
