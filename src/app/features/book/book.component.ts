@@ -11,11 +11,12 @@ import { BookDialogComponent } from '../book-dialog/book-dialog.component';
   selector: 'app-book',
   standalone: true,
   imports: [
-            CardModule, 
-            ButtonModule, 
-            DialogModule, 
-            // BookDialogComponent,
-            InputTextModule],
+    CardModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    BookDialogComponent
+],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })

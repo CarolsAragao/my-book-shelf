@@ -7,12 +7,13 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user/user.model';
 import { ToastService } from '../../../shared/toast/toast.service';
 import { MessageService } from 'primeng/api';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = 'https://localhost:7052/api/Auth';
+  apiUrl = environment.apiUrl;
 
   constructor(public http: HttpClient,
               private _router: Router,
@@ -24,7 +25,7 @@ export class AuthService {
       .set('email', auth.email)
       .set('password', auth.password);
 
-     firstValueFrom(this.http.get<ApiResponse<any>>(`${this.apiUrl}/login`, {
+     firstValueFrom(this.http.get<ApiResponse<any>>(`${this.apiUrl}Auth/login`, {
       params: params
     })).then(res => {
       if (res.success) {
