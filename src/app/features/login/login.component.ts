@@ -54,5 +54,4 @@ export class LoginComponent {
 
 //TODO: loading
 //TODO:retirada de mockups dos livros e criação das tabelas
-//TODO: implementação do entity para todas as tabelas
 //TODO: estudos de testes unitários
