@@ -3,19 +3,25 @@ import { LoginComponent } from './login.component';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';  
 import { MessageService } from 'primeng/api';
+import { Auth } from '../../core/models/auth/auth.model';
 
 describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let component: LoginComponent;
-  let authService: AuthService;
+  let authServiceMock: any;
 
   beforeEach(async () => {
+    authServiceMock = {
+      login: jasmine.createSpy('login').and.returnValue(Promise.resolve())
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         LoginComponent,  
-        HttpClientModule        
+        HttpClientModule             
       ],
-      providers: [AuthService, MessageService]  
+    
+      providers: [ MessageService, { provide: AuthService, useValue: authServiceMock }]  
     }).compileComponents();
 
   });
@@ -74,5 +80,22 @@ describe('LoginComponent', () => {
   it('form was created perfectly', () => {
     component.loginForm.setValue({ email: 'test@email.com', password: '123456' });
     expect(component.loginForm.valid).toBeTrue();
+  });
+
+  it('if form is empty shouldnt call AuthService', async () => {
+    component.loginForm.setValue({ email: '', password: '' }); 
+    await component.onSubmit();
+    expect(authServiceMock.login).not.toHaveBeenCalled();
+  });
+
+  it('if form is valid then call AuthService login method', async () => {
+    const authData: Auth = new Auth();
+    authData.email = 'test@email.com';
+    authData.password = '123456'
+    component.loginForm.setValue(authData);
+
+    await component.onSubmit();
+
+    expect(authServiceMock.login).toHaveBeenCalledWith(authData);
   });
 });
