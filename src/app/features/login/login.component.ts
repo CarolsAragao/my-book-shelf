@@ -3,12 +3,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { PasswordModule } from 'primeng/password';
-import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { FormControl, FormsModule, Validators } from '@angular/forms';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Auth } from '../../core/models/auth/auth.model';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -29,18 +28,12 @@ import { CommonModule } from '@angular/common';
   providers: []
 })
 export class LoginComponent {
-  user: any;
-  loginForm: FormGroup;
-  constructor(
-    private _fb: FormBuilder,
-    private _auth: AuthService,
-    private _route: Router
-  ) {
-    this.loginForm = this._fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  } 
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  });
+  constructor(private _auth: AuthService) { } 
+
   async onSubmit() {
     const auth = new Auth();
     if (this.loginForm.valid) {

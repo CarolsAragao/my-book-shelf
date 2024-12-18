@@ -26,7 +26,53 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('deve criar o componente', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('loginForm should be created', () => {
+    expect(component.loginForm).toBeTruthy();
+  });
+
+  it('form created with both controls: email and password', () => {
+    expect(component.loginForm).toBeDefined();
+    expect(component.loginForm.contains('email')).toBeTrue();
+    expect(component.loginForm.contains('password')).toBeTrue();
+  });
+
+  it('email validators and email format validator', () => {
+    const emailControl = component.loginForm.get('email');
+  
+    emailControl?.setValue('');
+    expect(emailControl?.valid).toBeFalse(); 
+  
+    emailControl?.setValue('not-an-email');
+    expect(emailControl?.valid).toBeFalse(); 
+  
+    emailControl?.setValue('valid@email.com');
+    expect(emailControl?.valid).toBeTrue(); 
+  });
+  
+  it('password should exist and should has 6 caracter min length', () => {
+    const passwordControl = component.loginForm.get('password');
+  
+    passwordControl?.setValue('');
+    expect(passwordControl?.valid).toBeFalse(); 
+  
+    passwordControl?.setValue('123');
+    expect(passwordControl?.valid).toBeFalse(); 
+  
+    passwordControl?.setValue('123456');
+    expect(passwordControl?.valid).toBeTrue();
+  });
+
+  it('empty form validator', () => {
+    component.loginForm.setValue({ email: '', password: '' });
+    expect(component.loginForm.valid).toBeFalse();
+  });
+  
+  it('form was created perfectly', () => {
+    component.loginForm.setValue({ email: 'test@email.com', password: '123456' });
+    expect(component.loginForm.valid).toBeTrue();
   });
 });
