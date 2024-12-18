@@ -17,7 +17,8 @@ import { NavComponent } from '../nav/nav.component';
               InputTextModule,
               FormsModule,
               InputGroupModule,
-              InputGroupAddonModule],
+              InputGroupAddonModule
+              ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

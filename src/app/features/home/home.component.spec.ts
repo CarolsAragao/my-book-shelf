@@ -1,23 +1,34 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { HomeComponent } from './home.component'; // Caminho correto para o seu arquivo HomeComponent
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { HomeComponent } from "./home.component";
+import { NavComponent } from "../nav/nav.component";
+import { AuthService } from "../../core/services/auth/auth.service";
+import { HttpClientModule } from "@angular/common/http";
+import { MessageService } from "primeng/api";
 
-// describe('HomeComponent', () => {
-//   let fixture: ComponentFixture<HomeComponent>;
-//   let component: HomeComponent;
+describe('HomeComponent', () => {
+let fixture: ComponentFixture<HomeComponent>;
+let component: HomeComponent;
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [HomeComponent], // Importa o próprio HomeComponent (já inclui seus imports)
-//     }).compileComponents();
-//   });
+    beforeEach(async () => {
+        TestBed.configureTestingModule({
+            imports: [
+                HomeComponent,  
+                NavComponent,        
+                HttpClientModule         
+            ],
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(HomeComponent); // Cria a instância do componente
-//     component = fixture.componentInstance; // Atribui o componente à variável
-//     fixture.detectChanges(); // Realiza a detecção de mudanças no componente
-//   });
+             providers: [ MessageService, AuthService ]  
+                 }).compileComponents();
+    });
 
-// //   it('deve criar o componente', () => {
-// //     expect(component).toBeTruthy(); // Verifica se o componente foi criado com sucesso
-// //   });
-// });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(HomeComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create the component', () => {
+        expect(component).toBeTruthy();
+    });
+        
+});

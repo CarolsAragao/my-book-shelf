@@ -10,7 +10,7 @@ import { BookComponent } from '../book/book.component';
 @Component({
   selector: 'app-book-dialog',
   standalone: true,
-  imports: [BookComponent,DialogModule, ButtonModule, InputTextModule,CardModule,LimitCharsPipe],
+  imports: [DialogModule, ButtonModule, InputTextModule,CardModule,LimitCharsPipe],
   templateUrl: './book-dialog.component.html',
   styleUrl: './book-dialog.component.css'
 })
