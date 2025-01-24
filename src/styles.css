@@ -14,7 +14,7 @@
 }
 
 .p-megamenu.p-component.p-megamenu-horizontal{
-    background-color:#374151;
+    background-color: transparent;
 }
 
 .p-menuitem-text.ng-star-inserted {
@@ -32,27 +32,35 @@
 }
 
 .p-menuitem-content {
-    background-color:#374151;
+    background-color: transparent;
 }
 
 .p-tieredmenu.p-component.p-tieredmenu-overlay.ng-star-inserted{
-    background-color:#374151;
+    background-color: transparent;
 }
 
 .p-megamenu-grid{
-    background-color:#374151;
+    background-color: transparent;
 }
 
 .p-megamenu-submenu-header.p-submenu-header.ng-star-inserted{
-    background-color:#374151;
-    color: #ffffff;
+    background-color: transparent;
+    /* color: #ffffff; */
 }
 
 .p-megamenu.p-component.p-megamenu-horizontal{
-    border:1px solid #374151;
+    border:1px solid transparent;
 }
 
 .p-element .p-inputgroup{
     margin: 25px 10px 25px 15px;
     width: 30% !important;
 }
+
+.p-megamenu-grid{
+    background-color: #290001;
+}
+
+/* .p-megamenu-panel .ng-star-inserted {
+    background-color: none;
+} */
