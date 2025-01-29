@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Auth } from '../../core/models/auth/auth.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
-  constructor(private _auth: AuthService) { } 
+  constructor(private _auth: AuthService, private _router: Router) { } 
 
   async onSubmit() {
     const auth = new Auth();
@@ -42,6 +43,10 @@ export class LoginComponent {
 
       await this._auth.login(auth);
     }
+  }
+
+  addNewUser() {
+    this._router.navigate(['addUser']);
   }
 }
 

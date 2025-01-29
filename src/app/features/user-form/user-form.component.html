@@ -1,1 +1,20 @@
-<p>user-form works!</p>
+<div class="container">    
+    <section class="form-container">
+        <form (ngSubmit)="onSubmit()">
+            <h3 class="title-form">Fill the form: </h3>
+                <label>Name: </label>
+                <input formControlName="name" type="text" pInputText />
+                <label>CPF: </label>
+                <input type="text" pInputText [(ngModel)]="cpf" />
+                <label>E-mail: </label>
+                <input type="text" pInputText [(ngModel)]="email" />
+                <label>Password: </label>
+                <p-password [(ngModel)]="password" [toggleMask]="true" />
+                <label>Repeat your Password: </label>
+                <p-password [(ngModel)]="passwordConfirmation" [toggleMask]="true" />
+            <div class="card flex justify-content-center">
+                <button class="btn-send" type="submit">Send</button>
+            </div>
+        </form>
+    </section>
+</div>

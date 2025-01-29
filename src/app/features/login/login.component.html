@@ -5,6 +5,9 @@
             <input type="text" class="input-login user-name" pInputText placeholder="youremail@email.com" formControlName="email"/>
             <input type="password" class="input-login password" pInputText placeholder="Password" formControlName="password"/>
             <button class="btn-login" type="submit">Login</button>
+            <p class="link-new-user">Se ainda não está cadastrado 
+                <span class="link-cursor" (click)="addNewUser()"><strong>Clique aqui!</strong></span>
+            </p>
         </form>
     </div>
 </div>

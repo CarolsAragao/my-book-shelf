@@ -1,12 +1,12 @@
 export class User {
-    guid = ''
+    id = ''
     name = ''
     email = ''
     cpf = ''
     userType = ''
 
     constructor(tokenDecoded?: any){
-        this.guid = tokenDecoded?.Guid,
+        this.id = tokenDecoded?.Guid,
         this.name = tokenDecoded?.sub,
         this.email = tokenDecoded?.email,
         this.cpf = tokenDecoded?.CPF,
