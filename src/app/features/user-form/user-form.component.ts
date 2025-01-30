@@ -5,6 +5,7 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { UserCreate } from '../../core/models/user/user.model';
 import { Utils } from '../../shared/utils/utils';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -22,7 +23,8 @@ export class UserFormComponent implements OnInit{
   userForm!: FormGroup
   user!: UserCreate
 
-  constructor(private formbuilder: FormBuilder){}
+  constructor(private formbuilder: FormBuilder, 
+              private _userService: UserService){}
 
   ngOnInit(): void {
     this.buildForm();
@@ -36,11 +38,15 @@ export class UserFormComponent implements OnInit{
       password: ['', [Validators.required]],
       passwordverification: ['', [Validators.required]]
     },{ validators: Utils.matchPassword('password', 'passwordverification') })
-  }
-
-  
+  }  
   onSubmit() {
     this.user = this.userForm.getRawValue() as UserCreate;
-    alert(this.user.name)
+    this.AddUser();
+  }
+
+  AddUser() {
+    this._userService.cadastrar(this.user).subscribe(res =>{
+      console.log('Vai cadastrar', res);      
+    });
   }
 }
