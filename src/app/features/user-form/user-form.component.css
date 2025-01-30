@@ -28,7 +28,7 @@ form{
     font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-send{
+/* .btn-send{
     background-color: #4A2C2A;
     color: white;
     padding: 10px;
@@ -37,7 +37,7 @@ form{
     font-weight: bold;
     border: none;
     cursor: pointer;
-}
+} */
 
 input {
     width: 340px;

@@ -13,3 +13,10 @@ export class User {
         this.userType = tokenDecoded?.UserType
     }
 }
+
+export interface UserCreate {
+    name: string
+    email: string
+    password: string
+    cpf: string
+}
