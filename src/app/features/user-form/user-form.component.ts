@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { UserCreate } from '../../core/models/user/user.model';
 import { Utils } from '../../shared/utils/utils';
 import { UserService } from '../../core/services/user.service';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-user-form',
@@ -39,14 +40,16 @@ export class UserFormComponent implements OnInit{
       passwordverification: ['', [Validators.required]]
     },{ validators: Utils.matchPassword('password', 'passwordverification') })
   }  
-  onSubmit() {
+  async onSubmit() {
     this.user = this.userForm.getRawValue() as UserCreate;
-    this.AddUser();
+    await this.AddUser();
   }
 
-  AddUser() {
-    this._userService.cadastrar(this.user).subscribe(res =>{
-      console.log('Vai cadastrar', res);      
-    });
+  async AddUser() {
+    await this._userService.cadastrar(this.user);
+  }
+
+  cpfValidator(isCpf: string): boolean{
+    return cpf.isValid(isCpf);
   }
 }

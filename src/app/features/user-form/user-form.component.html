@@ -7,18 +7,39 @@
                 
                 <label>Name: </label>
                 <input formControlName="name" type="text" pInputText />
+                @if(userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+                    <span>the name field is invalid.</span>
+                }
+
                 <label>CPF: </label>
                 <input formControlName="cpf" type="text" pInputText/>
+                @if(userForm.get('cpf')?.invalid && userForm.get('cpf')?.touched) {
+                    <span>the cpf field is required.</span>
+                }
+                @if(cpfValidator(userForm.get('cpf')?.value) === false && userForm.get('cpf')?.touched) {
+                    <span>cpf invalid.</span>
+                }
+
                 <label>E-mail: </label>
                 <input formControlName="email" type="text" pInputText />
+                @if(userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+                    <span>the email field is invalid.</span>
+                }
+
                 <label>Password: </label>
                 <p-password formControlName="password" [toggleMask]="true"/>
+                @if(userForm.get('password')?.invalid && userForm.get('password')?.touched) {
+                    <span>the password field is required.</span>
+                }
+                
                 <label>Repeat your Password: </label>
                 <p-password formControlName="passwordverification" [toggleMask]="true"/> 
-                
-                <!-- <div class="card flex justify-content-center">
-                    <button class="btn-send" type="submit">Send</button>
-                </div> -->
+                @if(userForm.get('passwordverification')?.invalid && userForm.get('passwordverification')?.touched) {
+                    <span>the password confirmation field is required.</span>
+                }            
+                @if(userForm.get('password') !== userForm.get('passwordverification') && userForm.get('passwordverification')?.touched){
+                    <small class="erro">password Mismatched</small>
+                }                
 
                 <p-button 
                 severity="secondary" 
