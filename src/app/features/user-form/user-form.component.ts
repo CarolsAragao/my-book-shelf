@@ -7,6 +7,9 @@ import { UserCreate } from '../../core/models/user/user.model';
 import { Utils } from '../../shared/utils/utils';
 import { UserService } from '../../core/services/user.service';
 import { cpf } from 'cpf-cnpj-validator';
+import { Toast } from 'primeng/toast';
+import { ToastService } from '../../shared/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -25,7 +28,9 @@ export class UserFormComponent implements OnInit{
   user!: UserCreate
 
   constructor(private formbuilder: FormBuilder, 
-              private _userService: UserService){}
+              private _userService: UserService,
+              private _toast: ToastService,
+              private _router: Router){}
 
   ngOnInit(): void {
     this.buildForm();
@@ -33,7 +38,7 @@ export class UserFormComponent implements OnInit{
   
   buildForm() {
     this.userForm = this.formbuilder.group({
-      name: ['', [Validators.maxLength(50), Validators.minLength(5), Validators.required]],
+      name: ['', [Validators.required]],
       cpf: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
@@ -45,11 +50,28 @@ export class UserFormComponent implements OnInit{
     await this.AddUser();
   }
 
-  async AddUser() {
-    await this._userService.cadastrar(this.user);
+  async AddUser() {    
+    const res = await this._userService.cadastrar(this.user);
+    if(res.success){
+      this._toast.showSuccess('Success', res.message);
+      this._router.navigate(['']);
+    } else {
+      this._toast.showError('Error', res.message);
+    }
   }
 
   cpfValidator(isCpf: string): boolean{
-    return cpf.isValid(isCpf);
+    return Utils.cpfValidator(isCpf);
+  }
+
+  lengthValidator(validatedinput: string, lenMin: number, lenMax?: number){
+    if(lenMax !== null && lenMax !== undefined){
+      if(validatedinput.length > lenMax || validatedinput.length < lenMin){
+        return false;
+      }
+    } else if(validatedinput.length < lenMin){
+      return false;
+    }    
+    return true;
   }
 }

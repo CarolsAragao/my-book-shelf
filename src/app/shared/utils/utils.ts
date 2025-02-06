@@ -1,4 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { cpf } from "cpf-cnpj-validator";
 import { jwtDecode } from "jwt-decode";
 export class Utils {
 
@@ -28,4 +29,7 @@ export class Utils {
     };  
   }
 
+  static cpfValidator(isCpf: string): boolean{
+    return cpf.isValid(isCpf);
+  }
 }

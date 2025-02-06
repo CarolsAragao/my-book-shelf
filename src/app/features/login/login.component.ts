@@ -54,3 +54,4 @@ export class LoginComponent {
 //TODO:retirada de mockups dos livros e criação das tabelas
 //TODO: estudos de testes unitários
 //TODO:criar componente de botão "voltar"
+//TODO:criar o "recuperar senha"

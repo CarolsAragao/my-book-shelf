@@ -6,9 +6,13 @@
                 <h3 class="title-form">Fill the form: </h3>
                 
                 <label>Name: </label>
-                <input formControlName="name" type="text" pInputText />
+                <input formControlName="name" type="text" pInputText maxlength="50" />
                 @if(userForm.get('name')?.invalid && userForm.get('name')?.touched) {
                     <span>the name field is invalid.</span>
+                }
+
+                @if(!lengthValidator(userForm.get('name')?.value, 5) && userForm.get('name')?.touched) {
+                    <span>Name must have more than 5 characters and less than 50.</span>
                 }
 
                 <label>CPF: </label>
@@ -30,6 +34,10 @@
                 <p-password formControlName="password" [toggleMask]="true"/>
                 @if(userForm.get('password')?.invalid && userForm.get('password')?.touched) {
                     <span>the password field is required.</span>
+                }
+
+                @if(!lengthValidator(userForm.get('password')?.value, 6, 8) && userForm.get('password')?.touched) {
+                    <span>password must have more than 6 characters and less than 8.</span>
                 }
                 
                 <label>Repeat your Password: </label>

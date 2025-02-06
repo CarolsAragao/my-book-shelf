@@ -49,3 +49,8 @@ form{
 .link-cursor{
     cursor: pointer;
 }
+
+span {
+    color: white;
+    text-align: center;
+}

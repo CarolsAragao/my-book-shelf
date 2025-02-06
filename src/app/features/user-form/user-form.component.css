@@ -28,18 +28,12 @@ form{
     font-family: 'Times New Roman', Times, serif;
 }
 
-/* .btn-send{
-    background-color: #4A2C2A;
-    color: white;
-    padding: 10px;
-    border-radius: 7px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-} */
-
 input {
     width: 340px;
 }
+
+span {
+    color: #DBCBBD;
+}
+
 
