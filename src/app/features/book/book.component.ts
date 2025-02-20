@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Book } from './book';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { LimitCharsPipe } from '../../shared/pipes/limitChars.pipe';
 import { BookDialogComponent } from '../book-dialog/book-dialog.component';
+import { BookService } from '../../core/services/book/book.service';
 
 @Component({
   selector: 'app-book',
@@ -20,7 +20,7 @@ import { BookDialogComponent } from '../book-dialog/book-dialog.component';
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
-export class BookComponent {
+export class BookComponent implements OnInit {
   useLimitChars = false;
   selectedBook: Book = new Book();
    books: Book[] = [
@@ -135,7 +135,20 @@ export class BookComponent {
   ];
 
   visible: boolean = false;
+  bookList: Book[] = [];
 
+  constructor(private bookService: BookService){}
+    ngOnInit(): void {
+        this.get();
+    }
+
+ get(){
+    this.bookService.get().subscribe(res => {
+        // this.bookList = res;
+        console.log(res);
+        
+    });        
+  }
     showDialog(book: Book) {
         this.visible = true;
         this.selectedBook = book;

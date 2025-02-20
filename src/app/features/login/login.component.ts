@@ -50,8 +50,12 @@ export class LoginComponent {
   }
 }
 
+//TODO: CRIAR O ADD BOOK!!!!!!!!!!!!!!!
+
 //TODO: loading
-//TODO:retirada de mockups dos livros e criação das tabelas
+//TODO: retirada de mockups dos livros e criação das tabelas
 //TODO: estudos de testes unitários
-//TODO:criar componente de botão "voltar"
-//TODO:criar o "recuperar senha"
+//TODO: criar componente de botão "voltar"
+//TODO: criar o "recuperar senha"
+//TODO: criar site para guardar imagens
+
