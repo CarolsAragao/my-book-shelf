@@ -53,7 +53,7 @@ export class AuthService {
 
   getUserId() {  
     const decodedToken = this.getTokenDecoded();    
-    return decodedToken?.Guid || null; 
+    return decodedToken?.Id || null; 
   } 
 
   getUserName() {  

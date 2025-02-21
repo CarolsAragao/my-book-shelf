@@ -36,7 +36,8 @@ export class MenuComponent implements OnInit{
                 [
                     {
                         items: [
-                            { label: 'My Books' }
+                            { label: 'My Books' },
+                            { label: 'Add Book',  command: () => this._router.navigate(['addBook'])}
                           
                         ],
                     }

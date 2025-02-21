@@ -1,0 +1,43 @@
+<div class="container">    
+    <section class="form-container">
+
+            <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+                
+                <h3 class="title-form">Create a new book: </h3>
+                
+                <label>Title: </label>
+                <input formControlName="title" type="text" pInputText/>
+                @if(bookForm.get('title')?.invalid && bookForm.get('title')?.touched) {
+                    <span>the title field is required.</span>
+                }
+
+                <label>Author: </label>
+                <input formControlName="author" type="text" pInputText/>          
+
+                <label>Publisher: </label>
+                <input formControlName="publisher" type="text" pInputText />            
+
+                <label>Released date: </label>
+                <p-calendar formControlName="releasedDate"/>
+                
+                <label>Edition: </label>
+                <input formControlName="edition" type="text" pInputText /> 
+                
+                <label>Description: </label>
+                <input formControlName="description" type="text" pInputText />
+                @if(bookForm.get('description')?.invalid && bookForm.get('description')?.touched) {
+                    <span>the description field is required.</span>
+                }
+
+                <label>Cover: </label>
+                <input formControlName="cover" type="text" pInputText />
+
+                <p-button 
+                severity="secondary" 
+                label="Create Book" 
+                type="submit" 
+                [disabled]="!bookForm.valid" 
+                />
+        </form>
+    </section>
+</div>
