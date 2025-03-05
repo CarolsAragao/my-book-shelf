@@ -51,7 +51,6 @@ export class LoginComponent {
 }
 
 //TODO: CRIAR O ADD BOOK!!!!!!!!!!!!!!!
-
 //TODO: loading
 //TODO: retirada de mockups dos livros e criação das tabelas
 //TODO: estudos de testes unitários
