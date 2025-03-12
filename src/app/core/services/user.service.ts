@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { UserCreate } from '../models/user/user.model';
-import { ApiResponse } from '../models/base/base.model';
+import { Result } from '../models/base/base.model';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private _httpClient: HttpClient) { }
 
-   public cadastrar(userCreate: UserCreate): Promise<ApiResponse<string>> {
-     return lastValueFrom(this._httpClient.post<ApiResponse<string>>(`${this.apiUser}User`, userCreate));      
+   public cadastrar(userCreate: UserCreate): Promise<Result<string>> {
+     return lastValueFrom(this._httpClient.post<Result<string>>(`${this.apiUser}User`, userCreate));      
   }
 }

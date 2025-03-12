@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth } from '../../models/auth/auth.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { ApiResponse } from '../../models/base/base.model';
+import { Result } from '../../models/base/base.model';
 import { Router } from '@angular/router';
 import { User } from '../../models/user/user.model';
 import { ToastService } from '../../../shared/toast/toast.service';
@@ -25,7 +25,7 @@ export class AuthService {
       .set('email', auth.email)
       .set('password', auth.password);
 
-     firstValueFrom(this.http.get<ApiResponse<any>>(`${this.apiUrl}Auth/login`, {
+     firstValueFrom(this.http.get<Result<any>>(`${this.apiUrl}Auth/login`, {
       params: params
     })).then(res => {
       if (res.success) {
