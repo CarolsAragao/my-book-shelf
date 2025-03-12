@@ -45,7 +45,7 @@
                 @if(userForm.get('passwordverification')?.invalid && userForm.get('passwordverification')?.touched) {
                     <span>the password confirmation field is required.</span>
                 }            
-                @if(userForm.get('password') !== userForm.get('passwordverification') && userForm.get('passwordverification')?.touched){
+                @if(userForm.get('password')?.value !== userForm.get('passwordverification')?.value && userForm.get('passwordverification')?.touched){
                     <small class="erro">password Mismatched</small>
                 }                
 
